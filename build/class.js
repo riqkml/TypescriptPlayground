@@ -42,6 +42,7 @@ var Admin = /** @class */ (function (_super) {
         var _this = _super.call(this, name, age) || this;
         _this.read = true;
         _this.write = true;
+        _this._email = "";
         _this.phone = phone;
         return _this;
     }
@@ -51,8 +52,20 @@ var Admin = /** @class */ (function (_super) {
             write: this.write,
         };
     };
+    Object.defineProperty(Admin.prototype, "email", {
+        get: function () {
+            return this._email;
+        },
+        set: function (value) {
+            this._email = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    //static property
+    Admin.getRoleName = "Admin";
     return Admin;
 }(User));
 var adm = new Admin("08127312", "riqki");
 adm.setName("amrela");
-console.log("nama terbaru", adm.getName());
+console.log("nama terbaru", Admin.getRoleName);

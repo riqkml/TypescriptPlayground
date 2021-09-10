@@ -26,6 +26,9 @@ class Admin extends User {
   read: boolean = true;
   write: boolean = true;
   phone: string;
+  private _email: string = "";
+  //static property
+  static getRoleName: string = "Admin";
 
   constructor(phone: string, name: string, age?: number) {
     super(name, age);
@@ -37,8 +40,16 @@ class Admin extends User {
       write: this.write,
     };
   }
+
+  set email(value: string) {
+    this._email = value;
+  }
+
+  get email(): string {
+    return this._email;
+  }
 }
 
 let adm = new Admin("08127312", "riqki");
 adm.setName("amrela");
-console.log("nama terbaru", adm.getName());
+console.log("nama terbaru", Admin.getRoleName);
